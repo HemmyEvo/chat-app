@@ -29,8 +29,9 @@ const DMConversationItems = ({id, imageUrl, username, lastMessageContent,lastMes
               <p className='font-semibold'>
                 {lastMessageSender}
                 {":"}&nbsp;
+                {lastMessageContent}
               </p>
-              <p className="truncate overflow-ellipsis">{lastMessageContent}</p>
+            
             </span> : <p className='truncate text-sm text-muted-foreground'>
               Start the Conversation!
             </p>}

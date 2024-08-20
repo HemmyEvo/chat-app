@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -134,7 +135,7 @@ const CreateGroupDialogue = (props: Props) => {
                                           {friend.username.substring(0,1)}
                                         </AvatarFallback>
                                       </Avatar>
-                                      <h4>{friend.username}</h4>
+                                      <h4 className='truncate'>{friend.username}</h4>
                                     </DropdownMenuCheckboxItem>
                                   )
                                 })
@@ -164,22 +165,23 @@ const CreateGroupDialogue = (props: Props) => {
                                   {friend.username.substring(0,1)}
                                 </AvatarFallback>
                               </Avatar>
-                              <X className='text-muted-foreground w-4 h-4 bottom-8 left-7 bg-muted rounded-full cursor-pointer' onClick={() => form.setValue("members", members.filter(id => id !== friend._id))}/>
+                              <X className='text-muted-foreground absolute w-4 h-4 bottom-8 left-7 bg-muted rounded-full cursor-pointer' onClick={() => form.setValue("members", members.filter(id => id !== friend._id))}/>
                               </div>
-                              <div className="truncate text-sm">{friend.username.split(" ")[0]}</div>
+                              <div className=" truncate text-sm">{friend.username.split(" ")[0]}</div>
                           </div>
                         )
                       })}
                    </Card> 
                    : null}
+                                    
+                <DialogFooter>
+                  <Button disabled={pending} type="submit">
+                    Create
+                  </Button>
+                </DialogFooter>
                 </form>
         </Form>
-        
-      <DialogFooter>
-        <Button disabled={pending} type="submit">
-          Create
-        </Button>
-      </DialogFooter>
+
       </DialogContent>
 
     </Dialog>
