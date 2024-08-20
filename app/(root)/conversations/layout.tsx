@@ -6,6 +6,7 @@ import { Loader } from 'lucide-react'
 import React from 'react'
 import DMConversationItems from './_components/DMConversationItems'
 import CreateGroupDialogue from './_components/CreateGroupDialogue'
+import GroupConversationItems from './_components/GroupConversations'
 
 type Props = React.PropsWithChildren<{}>
 
@@ -29,7 +30,13 @@ const Conversationslayout = ({ children }: Props) => {
         conversations.map((conversations) =>{
         return conversations.conversation.isGroup 
           ? 
-            null 
+          <GroupConversationItems 
+          key={conversations.conversation._id}
+          id={conversations.conversation._id} 
+          name={conversations.conversation.name || ""} 
+          lastMessageContent={conversations.lastMessage?.content}
+          lastMessageSender={conversations.lastMessage?.sender}
+          />
           : 
           (
           <DMConversationItems 

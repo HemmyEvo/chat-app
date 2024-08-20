@@ -1,5 +1,7 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Card } from '@/components/ui/card'
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -9,7 +11,7 @@ import { useMutationState } from '@/hook/useMutationState'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useQuery } from 'convex/react'
 import { ConvexError } from 'convex/values'
-import { CirclePlus } from 'lucide-react'
+import { CirclePlus, X } from 'lucide-react'
 import React, { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -38,8 +40,14 @@ const CreateGroupDialogue = (props: Props) => {
     })
   const members = form.watch("members", [])
   const unselectedFriends = useMemo(() =>{
-    return friends ? friends.filter(friend => !members.includes(friend._id)) : []
-  },[members.length, friends?.length])
+    return friends 
+    ? 
+    friends.filter((friend) => !members.includes(friend._id)) 
+    :
+    [];
+  },[members.length, friends?.length]);
+
+  
   const handleSubmit = async(values: z.infer<typeof createGroupFormSchema>) =>{
     await createGroup({name: values.name, members: values.members})
     .then(()=>{
@@ -98,7 +106,7 @@ const CreateGroupDialogue = (props: Props) => {
                     }
                     }/>
                    
-                    <FormField control={form.control} name='name' render={({}) =>
+                    <FormField control={form.control} name='name' render={() =>
                     {
                       return(
                      
@@ -119,7 +127,15 @@ const CreateGroupDialogue = (props: Props) => {
                                       if(checked){
                                         form.setValue("members", [...members, friend._id])
                                       }
-                                    }}></DropdownMenuCheckboxItem>
+                                    }}>
+                                      <Avatar className='w-8 h-8'>
+                                        <AvatarImage src={friend.imageUrl}/>
+                                        <AvatarFallback>
+                                          {friend.username.substring(0,1)}
+                                        </AvatarFallback>
+                                      </Avatar>
+                                      <h4>{friend.username}</h4>
+                                    </DropdownMenuCheckboxItem>
                                   )
                                 })
                               }
@@ -134,9 +150,38 @@ const CreateGroupDialogue = (props: Props) => {
                     }
                     }/>
                    
+                   {
+                   members && members.length 
+                   ?
+                   <Card className=' flex items-center gap-3 overflow-x-auto w-full h-24 no-scrollbar'>
+                      {friends?.filter(friend => members.includes(friend._id)).map(friend =>{
+                        return (
+                          <div key={friend._id} className='flex flex-col items-center gap-1'>
+                              <div className="relative">
+                              <Avatar className='w-8 h-8'>
+                                <AvatarImage src={friend.imageUrl}/>
+                                <AvatarFallback>
+                                  {friend.username.substring(0,1)}
+                                </AvatarFallback>
+                              </Avatar>
+                              <X className='text-muted-foreground w-4 h-4 bottom-8 left-7 bg-muted rounded-full cursor-pointer' onClick={() => form.setValue("members", members.filter(id => id !== friend._id))}/>
+                              </div>
+                              <div className="truncate text-sm">{friend.username.split(" ")[0]}</div>
+                          </div>
+                        )
+                      })}
+                   </Card> 
+                   : null}
                 </form>
-            </Form>
+        </Form>
+        
+      <DialogFooter>
+        <Button disabled={pending} type="submit">
+          Create
+        </Button>
+      </DialogFooter>
       </DialogContent>
+
     </Dialog>
   )
 }
