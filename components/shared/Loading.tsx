@@ -12,7 +12,7 @@ const Loading = ({ size = 130 }: Props) => {
   const { theme } = useTheme();
   const [svgColor, setSvgColor] = useState('green'); // Default color
 
-  theme && useEffect(() => {
+  useEffect(() => {
     // Update svgColor based on the theme
     const color = theme === 'dark' ? '#ffffff' : '#000000';
     setSvgColor(color);
