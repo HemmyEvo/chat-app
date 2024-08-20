@@ -5,7 +5,6 @@ import { getUserByClerkId } from "./_utils";
 export const create = mutation({
     args:{
       email: v.string(),
-      username: v.string()
     },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity()
@@ -13,7 +12,7 @@ export const create = mutation({
         if(!identity){
             throw new ConvexError("Unauthorized")
         }
-        if(args.email === identity.email || args.username === identity.nickname){
+        if(args.email === identity.email ){
             throw new ConvexError("Can't send a request to yourself")
         }
         const currentUser = await getUserByClerkId({ctx, clerkId: identity.subject})
@@ -65,6 +64,8 @@ export const create = mutation({
         return request;
     },
 })
+
+
 
 export const deny = mutation({
     args:{
