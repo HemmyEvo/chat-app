@@ -5,7 +5,7 @@ import React from 'react'
 import AddFriendDialog from './_component/AddFriendDialog'
 import { useQuery } from 'convex/react'
 import { api } from '@/convex/_generated/api'
-import { Loader, Loader2 } from 'lucide-react'
+import { Loader } from 'lucide-react'
 import Request from './_component/Request'
 
 const Friendspage = () => {

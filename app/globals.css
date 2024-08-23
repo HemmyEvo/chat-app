@@ -97,6 +97,14 @@ html, body{
   }
 }
 
+  
+.home {
+  grid-column: 7 / span 3;
+  grid-row: 7 / span 3;
+  background-color: white;
+  border: 2px solid black;
+}
+
 
 /* Apply the typing effect */
 .typing-effect {

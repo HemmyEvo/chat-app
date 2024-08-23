@@ -12,7 +12,7 @@ import Link from "next/link";
 const MobileNavbar = () => {
     const paths = useNavigation();
     const {isActive} = useConversation();
-if(isActive) return null
+  if(isActive) return null;
   return (
   <Card className="fixed bottom-4 lg:hidden w-[calc(100vw-32px)] flex items-center h-16 p-2">
     <nav className="w-full">
@@ -36,7 +36,7 @@ if(isActive) return null
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            {path.name}
+                        <p>{path.name}</p>
                         </TooltipContent>
                     </Tooltip>
                     </Link>

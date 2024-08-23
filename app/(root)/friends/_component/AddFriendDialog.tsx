@@ -17,7 +17,7 @@ import { ConvexError } from 'convex/values'
 const addFriendFormSchema = z.object({
     email: z
     .string()
-    .min(1,{message : "This field can't be empty"})
+    .min(1,{ message : "This field can't be empty"})
     .email("Please enter a valid email")
 })
 const AddFriendDialog = () => {

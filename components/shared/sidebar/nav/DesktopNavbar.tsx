@@ -34,7 +34,7 @@ const DesktopNavbar = () => {
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            {path.name}
+                        <p>{path.name}</p>
                         </TooltipContent>
                     </Tooltip>
                     </Link>

@@ -3,7 +3,6 @@ import { Id } from '@/convex/_generated/dataModel'
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User } from 'lucide-react';
 type Props = {
     id: Id<"conversations">; 
     name: string;
@@ -29,8 +28,8 @@ const GroupConversationItems = ({id, name, lastMessageContent,lastMessageSender}
               <p className='font-semibold'>
                 {lastMessageSender}
                 {":"}&nbsp;
+                {lastMessageContent}
               </p>
-              <p className="truncate overflow-ellipsis">{lastMessageContent}</p>
             </span> : <p className='truncate text-sm text-muted-foreground'>
               Start the Conversation!
             </p>}

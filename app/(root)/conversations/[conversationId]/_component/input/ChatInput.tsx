@@ -65,6 +65,14 @@ const ChatInput = () => {
   return (
     <Card className='w-full p-2 rounded-lg relative'>
       <div className="flex gap-2 items-end w-full">
+
+      <Button
+              type='button'
+              onClick={() => setShowPicker(!showPicker)}
+              size="icon"
+            >
+              <Smile />
+            </Button>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className='flex gap-2 items-end w-full'>
             <FormField control={form.control} name='content' render={({ field }) => {
@@ -86,19 +94,12 @@ const ChatInput = () => {
                     className='min-h-full w-full resize-none border-0 outline-0 bg-card text-card-foreground placeholder:text-muted-foreground p-1.5'
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             }} />
-            <Button
-              type='button'
-              onClick={() => setShowPicker(!showPicker)}
-              size="icon"
-            >
-              <Smile />
-            </Button>
+           
             {showPicker && (
               <div className='absolute bottom-16 left-2'>
-                <EmojiPicker onEmojiClick={onEmojiClick} />
+                <EmojiPicker onEmojiClick={() => onEmojiClick} />
               </div>
             )}
             <Button disabled={pending} size="icon" type='submit'>

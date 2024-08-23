@@ -18,7 +18,7 @@ const Body = (props: Props) => {
       {
         messages?.map(({message,senderImage,senderName,isCurrentUser}, index) => {
           const lastByUser = messages[index - 1]?.message.senderId === messages[index]?.message.senderId
-          return <Message key={message._id} fromCurrentUser={isCurrentUser} senderImage={senderImage} senderName={senderName} lastByUser={lastByUser} content={message.content} createdAt={message._creationTime} type={message.type}/>
+          return <Message key={message._id} fromCurrentUser={isCurrentUser} senderImage={senderImage} senderName={senderName} lastByUser={lastByUser} content={message.content} createdAt={message._creationTime} type={message.type} />
         }) 
       }
     </div>
