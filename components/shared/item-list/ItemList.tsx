@@ -14,6 +14,7 @@ const ItemList = ({children, title, action:Action}: Props) => {
     const {isActive} = useConversation();
   return (
    <Card className={cn("hidden h-full w-full lg:w-80 lg:flex-none p-2", {
+        block : !isActive,
         "lg:block" : isActive,
    })}>
     <div className="mb-4 flex items-center justify-between">
