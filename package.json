@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^5.3.2",
     "@hookform/resolvers": "^3.9.0",
+    "@next/swc-win32-x64-msvc": "^14.2.6",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
