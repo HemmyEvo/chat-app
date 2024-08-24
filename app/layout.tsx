@@ -27,7 +27,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-          <ConvexClientProvider>
+             <ConvexClientProvider>
           <TooltipProvider>
           {children}
           </TooltipProvider>
