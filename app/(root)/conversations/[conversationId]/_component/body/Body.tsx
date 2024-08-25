@@ -14,7 +14,7 @@ const Body = (props: Props) => {
     id: conversationId as Id<"conversations">,
   })
   return (
-    <div className='flex-1 w-full flex overflow-y-scroll flex-col-reverse gap-2 p-3  no-scrollbar'>
+    <div className='flex-1 max-w-full flex overflow-y-scroll flex-col-reverse gap-2 p-3  no-scrollbar'>
       {
         messages?.map(({message,senderImage,senderName,isCurrentUser}, index) => {
           const lastByUser = messages[index - 1]?.message.senderId === messages[index]?.message.senderId

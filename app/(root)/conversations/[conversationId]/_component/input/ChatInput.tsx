@@ -86,7 +86,7 @@ const ChatInput = () => {
                       }
                     }}
                     rows={1}
-                    maxRows={3}
+                    maxRows={1}
                     {...field}
                     onChange={handleInputChange}
                     onClick={handleInputChange}
