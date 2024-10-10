@@ -38,30 +38,11 @@ const Message = ({fromCurrentUser,senderImage,senderName,lastByUser,content,crea
         }
     };
 
-    // const handleTouchStart = () => {
-    //     if (fromCurrentUser) {
-    //         timerRef.current = setTimeout(() => {
-    //             setLongPress(true);
-    //             setOpen(true); // Open the custom dialog on long press
-    //         }, 500); // Duration for a long press (500 ms)
-    //     }
-    // };
-
-    // const handleTouchEnd = () => {
-    //     if (timerRef.current) {
-    //         clearTimeout(timerRef.current);
-    //     }
-    //     if (longPress) {
-    //         setLongPress(false);
-    //     }
-    // };
 
     return (
         <div
             className={cn('flex items-end', { 'justify-end': fromCurrentUser })}
-            onContextMenu={handleContextMenu} // Right-click event
-            // onTouchStart={handleTouchStart} // Long press event
-            // onTouchEnd={handleTouchEnd} // End of touch event
+            onContextMenu={handleContextMenu} 
         >
             <div
                 className={cn('flex flex-col w-full mx-2', {
@@ -91,40 +72,7 @@ const Message = ({fromCurrentUser,senderImage,senderName,lastByUser,content,crea
                         {formatTime(createdAt)}
                     </p>
                 </div>
-                {/* <Dialog open={open} onOpenChange={setOpen}>
-                    <DialogContent>
-                        <DialogHeader>
-                        
-                            <DialogDescription className=' self-start'>
-                               Delete message?
-                            </DialogDescription>
-                        </DialogHeader>
-      
-                        <Button
-                              
-                                className='font-semibold w-fit h-fit hover:bg-transparent bg-transparent place-self-end text-secondary-foreground'
-                                onClick={() => {
-                                    onDelete(); // Call the delete handler
-                                    setOpen(false); // Close the dialog
-                                }}
-                            >
-                                Delete for me Everybody
-                            </Button>
-                        <Button
-                              
-                              size="sm"
-                                className='font-semibold w-fit h-fit hover:bg-transparent bg-transparent place-self-end text-secondary-foreground'
-                                onClick={() => {
-                                    onDelete(); // Call the delete handler
-                                    setOpen(false); // Close the dialog
-                                }}
-                            >
-                                Delete for me
-                            </Button>
-                   
-                                
-                    </DialogContent>
-                </Dialog> */}
+                
             </div>
 
             <Avatar

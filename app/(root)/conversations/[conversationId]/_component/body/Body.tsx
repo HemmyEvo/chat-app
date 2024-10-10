@@ -1,7 +1,7 @@
 "use client"
 import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
-import { useConversation } from '@/hook/useConversation'
+import { useConversation } from '@/hook/useNavigationId'
 import { useQuery } from 'convex/react'
 import React from 'react'
 import Message from './Message'

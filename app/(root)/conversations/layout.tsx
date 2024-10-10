@@ -1,12 +1,14 @@
 "use client"
-import ItemList from '@/components/shared/item-list/ItemList'
 import { api } from '@/convex/_generated/api'
 import { useQuery } from 'convex/react'
-import { Loader } from 'lucide-react'
+import { Loader, MessageSquarePlusIcon } from 'lucide-react'
 import React from 'react'
 import DMConversationItems from './_components/DMConversationItems'
 import CreateGroupDialogue from './_components/CreateGroupDialogue'
 import GroupConversationItems from './_components/GroupConversations'
+import HomeItemList from '@/components/shared/item-list/HomeItemList'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 type Props = React.PropsWithChildren<{}>
 
@@ -16,7 +18,9 @@ const Conversationslayout = ({ children }: Props) => {
 
   return (
   <>
-  <ItemList title='Conversations' action={<CreateGroupDialogue />}>{
+  <HomeItemList title='Chats' action={<CreateGroupDialogue />}>
+    <div className="overflow-y-scroll  no-scrollbar">
+    {
     conversations 
     ? 
     (
@@ -27,6 +31,7 @@ const Conversationslayout = ({ children }: Props) => {
         )
         : 
         (
+          
         conversations.map((conversations) =>{
         return conversations.conversation.isGroup 
           ? 
@@ -56,7 +61,14 @@ const Conversationslayout = ({ children }: Props) => {
     (
     <Loader className=' animate-spin'/>
     )
-  }</ItemList>
+  }
+   <Link href={'/'}>
+   <Button size='icon' className="absolute bottom-10 right-0">
+    <MessageSquarePlusIcon/>
+    </Button>
+   </Link>
+    </div>
+  </HomeItemList>
   {children}
   </>)
 }

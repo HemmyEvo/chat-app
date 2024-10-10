@@ -1,6 +1,6 @@
 "use client"
 import ConversationFallback from '@/components/shared/conversation/ConversationFallback'
-import ItemList from '@/components/shared/item-list/ItemList'
+import ItemList from '@/components/shared/item-list/SettingsItemList'
 import React from 'react'
 import AddFriendDialog from './_component/AddFriendDialog'
 import { useQuery } from 'convex/react'

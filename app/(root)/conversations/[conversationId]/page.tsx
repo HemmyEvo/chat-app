@@ -16,7 +16,6 @@ type Props = {
     conversationId: Id<"conversations">
   }
 }
-
 const Conversationpage = ({params: {conversationId}}: Props) => {
   const conversation = useQuery(api.conversation.get, {id:conversationId})
   const [removeFriends, setRemoveFriends] = useState(false)

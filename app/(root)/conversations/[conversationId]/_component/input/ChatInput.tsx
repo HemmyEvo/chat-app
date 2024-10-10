@@ -3,7 +3,7 @@
 import { Card } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { api } from '@/convex/_generated/api'
-import { useConversation } from '@/hook/useConversation'
+import { useConversation } from '@/hook/useNavigationId'
 import { useMutationState } from '@/hook/useMutationState'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ConvexError } from 'convex/values'

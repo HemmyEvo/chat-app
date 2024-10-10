@@ -3,7 +3,7 @@ import { Id } from '@/convex/_generated/dataModel'
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User } from 'lucide-react';
+import {  Check, User } from 'lucide-react';
 type Props = {
     id: Id<"conversations">;
     imageUrl: string;
@@ -14,30 +14,37 @@ type Props = {
 
 const DMConversationItems = ({id, imageUrl, username, lastMessageContent,lastMessageSender}: Props) => {
   return (
-  <Link href={`/conversations/${id}`} className='w-full'>
-    <Card className='p-2 flex flex-row items-center gap-4 truncate'>
-       <div className="flex flex-row gap-4 items-center truncate">
-          <Avatar>
+  <Link href={`/conversations/${id}`} className='w-full '>
+
+    
+    <div className="cont flex py-3 cursor-pointer items-center space-x-2">
+          <Avatar className='w-8 h-8'>
             <AvatarImage src={imageUrl}/>
             <AvatarFallback><User /></AvatarFallback>
           </Avatar>
-          <div className="flex flex-col truncate">
-            <h4 className='truncate'>
-              {username}
-            </h4>
-            {lastMessageSender && lastMessageContent ? <span className='text-xs text-muted-foreground truncate overflow-ellipsis'>
-              <p className='font-semibold'>
-                {lastMessageSender}
-                {":"}&nbsp;
+        <div className="details flex-1 ">
+            <div className="head flex items-center justify-between">
+            <p className='name truncate'>{username}</p>
+            <p className='text-[12px] capitalize text-green-400 '>yesterday</p>
+            </div>
+            <div className="message-info  justify-between max-w-[100%] w-full flex items-center  ">
+            <div className="time-read relative w-[90%] truncate text-[12px] space-x-2  flex items-center">
+              <p><Check className='w-3 text-blue-700 h-3'/></p>
+            {lastMessageSender && lastMessageContent ? 
+              <p className='font-semibold max-w-[20%] w-full text-xs text-muted-foreground truncate'>
                 {lastMessageContent}
               </p>
-            
-            </span> : <p className='truncate text-sm text-muted-foreground'>
+            : 
+            <p className='truncate  max-w-[90%] w-full text-sm text-muted-foreground'>
               Start the Conversation!
             </p>}
-          </div>
-       </div>
-    </Card>
+                   
+            </div>
+
+            <p className='text-[12px] text-right bg-green-400 px-[3px] font-semibold rounded-[50%]'>12</p>
+            </div>
+        </div>
+    </div>
   </Link>
 )
 }

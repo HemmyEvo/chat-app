@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { useConversation } from "@/hook/useConversation";
+import { useConversation } from "@/hook/useNavigationId";
 import { useNavigation } from "@/hook/useNavigation";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
