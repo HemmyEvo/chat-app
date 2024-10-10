@@ -41,7 +41,7 @@ const Page = () => {
     let hasErrors = false;
 
     // Validation
-    if (username.trim().length < 5) { // Fixed the length check message here to match your validation
+    if (username.trim().length < 5) { 
       newErr.username = 'Username must be at least 5 characters long';
       hasErrors = true;
     }
@@ -106,7 +106,7 @@ const Page = () => {
             onChange={(e) => { setUsername(e.target.value); setErr((prev) => ({ ...prev, username: '' })); }}
             id="username"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2"
-            placeholder="Username" // Changed to double quotes
+            placeholder="Username"
           />
           {err.username && <p className="text-red-500 text-xs italic">{err.username}</p>}
         </div>
@@ -119,7 +119,7 @@ const Page = () => {
               onChange={(e) => { err.password = ''; setPassword(e.target.value); }}
               id="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2"
-              placeholder="Password" // Changed to double quotes
+              placeholder="Password"
             />
             <button
               type="button"
@@ -141,7 +141,7 @@ const Page = () => {
         <hr className="my-5" />
 
         <div className="text-center">
-          <span>I don't have an account?</span>
+          <span>I don&apos;t have an account?</span>
           <span className="underline text-blue-800">
             <Link href="/sign-up"> Sign up</Link>
           </span>
