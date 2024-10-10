@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { LucideMessageCircleQuestion, Pencil, QrCode, ScrollText, UserPen } from 'lucide-react';
 import { useUser } from '@clerk/nextjs'
 type Props = PropsWithChildren<{}>
-const {user} = useUser();
+
 const layout = ({children}: Props) => {
   
     const Links = [
@@ -15,6 +15,7 @@ const layout = ({children}: Props) => {
         {icon:<LucideMessageCircleQuestion />, label:'Help', path:'/settings/help'},
         {icon:<ScrollText/>, label:'About', path:'/settings/about'},
     ]
+    const {user} = useUser();
   return (
         <>
     <SettingsItem title='Settings'>
