@@ -1,4 +1,4 @@
-'use client'
+
 import SettingsItem from '@/components/shared/item-list/SettingsItemList'
 import React, { PropsWithChildren } from 'react'
 import { ThemeToggle } from '@/components/ui/theme/theme-toggle'
@@ -7,9 +7,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { LucideMessageCircleQuestion, Pencil, QrCode, ScrollText, UserPen } from 'lucide-react';
 import { useUser } from '@clerk/nextjs'
 type Props = PropsWithChildren<{}>
-
+const {user} = useUser();
 const layout = ({children}: Props) => {
-    const {user} = useUser();
+  
     const Links = [
         {icon:<UserPen />, label:'Edit Profile', path:'/settings/profile'},
         {icon:<LucideMessageCircleQuestion />, label:'Help', path:'/settings/help'},
